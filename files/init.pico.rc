@@ -2,6 +2,7 @@ import init.pico.usb.rc
 
 on early-init
     export EXTERNAL_STORAGE /storage/sdcard0
+    export SD_EXT_DIRECTORY /sd-ext
     mkdir /storage 0050 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
     symlink /storage/sdcard0 /sdcard
@@ -9,6 +10,7 @@ on early-init
 
 on post-fs-data
  # wifi
+    mkdir /data/misc 01771 system misc
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/wifi/hostapd 0770 wifi wifi
@@ -31,11 +33,12 @@ on boot
     setprop ro.EMPTY_APP_MEM 8192
 
     # bluetooth power up/down interface
-    chown bluetooth bluetooth /dev/ttyHS0
+    chown bluetooth net_bt_stack /dev/ttyHS0
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/proto
     chmod 0600 /dev/ttyHS0
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
-    chmod 0660                /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/proto
 
     chown radio radio /sys/module/pm/parameters/idle_sleep_mode
 
@@ -105,7 +108,7 @@ on boot
 
 service hciattach /system/bin/logwrapper /system/bin/brcm_patchram_plus --no2bytes --tosleep=50000 --enable_hci --baudrate 3000000 --patchram /etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd --scopcm=0,0,0,0,0,0,0,3,3,0 /dev/ttyHS0
     user root
-    group bluetooth net_bt_admin
+    group bluetooth net_bt_admin net_bt_stack
     disabled
     oneshot
 
@@ -168,3 +171,6 @@ service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     disabled
     oneshot
     keycodes 115 272
+
+# load wifi module
+insmod /system/lib/modules/bcmdhd.ko
