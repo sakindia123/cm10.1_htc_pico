@@ -78,7 +78,7 @@ BOARD_BLUEDROID_VENDOR_CONF := device/htc/pico/bluetooth/vnd_pico.txt
 TARGET_SPECIFIC_HEADER_PATH := device/htc/pico/include
 
 # OpenGL drivers config file path
-BOARD_EGL_CFG := vendor/htc/pico/proprietary/lib/egl/egl.cfg
+BOARD_EGL_CFG := device/htc/pico/prebuilt/lib/egl/egl.cfg
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_LIBS := true
