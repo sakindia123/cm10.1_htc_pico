@@ -180,7 +180,14 @@
         </string-array>
     </add-resource>
 
- <!-- True will enable the electron beam screen-off animation. -->
+    <string-array name="config_locationProviderPackageNames" translatable="false">
+       <!-- The standard AOSP fused location provider -->
+       <item>com.android.location.fused</item>
+       <!-- The Google Network Location Services location provider -->
+       <item>com.google.android.location</item>
+    </string-array>   
+     
+    <!-- True will enable the electron beam screen-off animation. -->
     <bool name="config_screenOffAnimation">true</bool>
 
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->

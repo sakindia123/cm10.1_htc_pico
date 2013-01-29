@@ -47,7 +47,7 @@ PRODUCT_PACKAGES += \
     lights.pico \
     sensors.msm7x27a \
     gps.pico \
-    power.pico
+    power.msm7x27a
     
 # Camera
 PRODUCT_PACKAGES += \
