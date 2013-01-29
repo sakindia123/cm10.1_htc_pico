@@ -35,8 +35,6 @@ PRODUCT_PACKAGES += \
     
 # Audio
 PRODUCT_PACKAGES += \
-    audio.primary.msm7x27a \
-    audio_policy.msm7x27a \
     audio.a2dp.default \
     audio_policy.conf \
     libaudioutils
@@ -151,8 +149,8 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/etc/AudioFilter_HP.csv:system/etc/AudioFilter_HP.csv \
     vendor/htc/pico/proprietary/lib/libaudioeq.so:system/lib/libaudioeq.so \
     vendor/htc/pico/proprietary/lib/libhtc_acoustic.so:system/lib/libhtc_acoustic.so \
-#    device/htc/pico/prebuilt/audio.primary.msm7x27a.so:system/lib/hw/audio.primary.msm7x27a.so \
-#    device/htc/pico/prebuilt/audio.primary.msm7x27a.so:system/lib/hw/audio.primary.msm7x27a.so
+    device/htc/pico/prebuilt/audio.primary.msm7x27a.so:system/lib/hw/audio.primary.msm7x27a.so \
+    device/htc/pico/prebuilt/audio.primary.msm7x27a.so:system/lib/hw/audio.primary.msm7x27a.so
 
 # Sensors
 PRODUCT_COPY_FILES += \
