@@ -18,6 +18,6 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "Explorer A301e"
+#define BTM_DEF_LOCAL_NAME   "HTC Explorer A301e"
 
 #endif

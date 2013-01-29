@@ -13,17 +13,6 @@ app/MagicSmokeWallpapers.apk
 app/Galaxy4.apk
 app/PhaseBeam.apk
 
-# Fonts (11.9MB)
-fonts/DroidSansArmenian.ttf
-fonts/DroidSansEthiopic-Regular.ttf
-fonts/DroidSansGeorgian.ttf
-fonts/DroidSansHebrew-Bold.ttf
-fonts/DroidSansHebrew-Regular.ttf
-fonts/DroidSansThai.ttf
-fonts/MTLmr3m.ttf
-fonts/NanumGothic.ttf
-fonts/NanumGothicBold.ttf
-
 # Ringtones (5.85MB)
 media/audio/ringtones/Acheron.ogg
 media/audio/ringtones/Andromeda.ogg

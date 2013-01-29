@@ -27,8 +27,8 @@
 #include <hardware_legacy/AudioHardwareBase.h>
 
 extern "C" {
-#include <linux/msm_audio.h>
-#include <linux/msm_audio_voicememo.h>
+#include "linux/msm_audio.h"
+#include "linux/msm_audio_voicememo.h"
 #ifdef QCOM_VOIP_ENABLED
 #include <linux/msm_audio_mvs.h>
 #endif
@@ -152,7 +152,7 @@ enum tty_modes {
 #define CODEC_TYPE_PCM 0
 #define AUDIO_HW_NUM_OUT_BUF 2  // Number of buffers in audio driver for output
 // TODO: determine actual audio DSP and hardware latency
-#define AUDIO_HW_OUT_LATENCY_MS 0  // Additionnal latency introduced by audio DSP and hardware in ms
+#define AUDIO_HW_OUT_LATENCY_MS 40  // Additionnal latency introduced by audio DSP and hardware in ms
 
 #define AUDIO_HW_IN_SAMPLERATE 8000                 // Default audio input sample rate
 #define AUDIO_HW_IN_CHANNELS (AudioSystem::CHANNEL_IN_MONO) // Default audio input channel mask

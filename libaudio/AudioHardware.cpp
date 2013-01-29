@@ -3233,7 +3233,7 @@ ssize_t AudioHardware::AudioStreamInMSM72xx::read( void* buffer, ssize_t bytes)
         }
         else if(bytesRead == 0)
         {
-         ALOGI("Bytes Read = %d ,Buffer no longer sufficient",bytesRead);
+         ALOGI("Bytes Read = %d ,Buffer no longer sufficient", sizeof(bytesRead));
          break;
         } else {
             if (errno != EAGAIN) return bytesRead;

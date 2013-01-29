@@ -17,6 +17,8 @@ USE_CAMERA_STUB := true
 
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DREFRESH_RATE=65 -DQCOM_NO_SECURE_PLAYBACK
+COMMON_GLOBAL_CFLAGS += -DQCOM_ICS_DECODERS -DBINDER_COMPAT
 
 # Arch related defines
 TARGET_BOARD_PLATFORM := msm7x27a
@@ -43,14 +45,14 @@ BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
 BOARD_KERNEL_BASE := 0x12c00000
 BOARD_PAGE_SIZE := 0x00000800
 
-# Additional librarys
+# Additional libraries
 TARGET_PROVIDES_LIBAUDIO := true
 BOARD_HAVE_HTC_AUDIO := true
 #COMMON_GLOBAL_CFLAGS += -DMR0_AUDIO_BLOB
 
 # Fix this up by examining /proc/mtd on a running device
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00400000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00600000  #kernel don't fit anymore in recovery!
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00600000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 524288000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x09600000
 BOARD_FLASH_BLOCK_SIZE := 262144
@@ -84,21 +86,22 @@ BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_LIBS := true
 TARGET_GRALLOC_USES_ASHMEM := true
 
-# Wifi related defines
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-WPA_SUPPLICANT_VERSION := VER_0_8_X
+# Wifi related definitions
+BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-BOARD_HOSTAPD_DRIVER        := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
-BOARD_WLAN_DEVICE           := bcmdhd
-WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/bcmdhd.ko"
-WIFI_DRIVER_FW_PATH_STA := "/system/etc/firmware/fw_bcm4330_b2.bin"
-WIFI_DRIVER_FW_PATH_AP := "/system/etc/firmware/fw_bcm4330_apsta_b2.bin"
-WIFI_DRIVER_FW_PATH_P2P := "/system/etc/firmware/fw_bcm4330_p2p_b2.bin"
-WIFI_DRIVER_MODULE_NAME := "bcmdhd"
-WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/firmware/fw_bcm4330_b2.bin nvram_path=/proc/calibration iface_name=eth0"
-WIFI_BAND                 := 802_11_ABG
+BOARD_HOSTAPD_DRIVER             := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
+BOARD_WLAN_DEVICE                := bcmdhd
+WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/bcmdhd.ko"
+WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/fw_bcm4330_b2.bin"
+WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcm4330_apsta_b2.bin"
+WIFI_DRIVER_FW_PATH_P2P          := "/system/etc/firmware/fw_bcm4330_p2p_b2.bin"
+WIFI_DRIVER_MODULE_NAME          := "bcmdhd"
+WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/etc/firmware/fw_bcm4330_b2.bin nvram_path=/proc/calibration iface_name=eth0"
+WIFI_BAND                        := 802_11_ABG
+BOARD_LEGACY_NL80211_STA_EVENTS  := true
 
 TARGET_CUSTOM_WIFI := ../../device/htc/pico/libhardware_legacy/wifi/wifi.c
 
@@ -108,8 +111,7 @@ TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 TARGET_BOOTANIMATION_USE_RGB565 := true
 
 # Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := device/htc/pico/releasetools
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/htc/pico/releasetools/ota_from_target_files
+TARGET_OTA_EXTRAS_FILE := device/htc/pico/releasetools/extras.txt
 
 # GPS
 BOARD_USES_QCOM_GPS := true
@@ -133,8 +135,24 @@ BOARD_USES_ADRENO_200 := true
 TARGET_QCOM_DISPLAY_VARIANT := legacy
 BOARD_EGL_NEEDS_LEGACY_FB := true
 TARGET_USES_PMEM := true
-TARGET_NO_HW_VSYNC := true # To do
-TARGET_USES_ION := false # To do
+#To Do
+TARGET_NO_HW_VSYNC := true
+TARGET_USES_ION := false
+
+# Caf 
+TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
+BOARD_HAS_8BIT_BCHECC_SUPPORT := true
+BOARD_KERNEL_BCHECC_SPARESIZE := 160
+BOARD_HAVE_MXT224_CFG := true
+TARGET_HAVE_TSLIB := true
+MM_AUDIO_OMX_ADEC_EVRC_DISABLED := false
+MM_AUDIO_OMX_ADEC_QCELP13_DISABLED := false
+MM_AUDIO_FTM_DISABLED := false
+MM_AUDIO_MEASUREMENT_DISABLED := false
+BOARD_USES_QCNE := true
+PROTEUS_DEVICE_API := true
+MM_AUDIO_VOEM_DISABLED := false
+BOARD_USES_QCOM_AUDIO_SPEECH := true
 
 # ICS Stuff
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -155,15 +173,11 @@ ENABLE_JSC_JIT := true
 JS_ENGINE := v8
 HTTP := chrome
 
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DREFRESH_RATE=65 -DQCOM_NO_SECURE_PLAYBACK -DQCOM_ICS_DECODERS -DQCOM_LEGACY_OMX 
-
 # Touch screen compatibility for JB
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
-# custom liblights
-TARGET_PROVIDES_LIBLIGHTS := true
+# Custom liblights
+TARGET_PROVIDES_LIBLIGHT := true
 
-# FM Radio (To do)
-#BOARD_HAVE_FM_RADIO := true
-#BOARD_FM_DEVICE := bcm4330
-#BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
+# Keep Size in check
+SMALLER_FONT_FOOTPRINT := true
