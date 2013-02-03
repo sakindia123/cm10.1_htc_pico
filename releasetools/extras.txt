@@ -4,7 +4,6 @@ lib/libvideoeditor_jni.so
 lib/libvideoeditorplayer.so
 
 # CM Wallpapers (7MB)
-app/CMWallpapers.apk
 app/CMUpdater.apk
 
 # Live Wallpapers (2.11MB)
