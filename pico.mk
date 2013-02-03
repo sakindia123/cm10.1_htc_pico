@@ -46,6 +46,7 @@ PRODUCT_PACKAGES += \
     lights.pico \
     sensors.msm7x27a \
     gps.pico \
+    librpc \
     power.msm7x27a
     
 # Camera
@@ -220,4 +221,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
     
 PRODUCT_AAPT_CONFIG := normal mdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
-PRODUCT_TAGS += dalvik.gc.type-precise
