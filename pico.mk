@@ -1,4 +1,3 @@
-
 # Copyright (C) 2011 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -148,7 +147,7 @@ PRODUCT_COPY_FILES += \
     vendor/htc/pico/proprietary/lib/libaudioeq.so:system/lib/libaudioeq.so \
     vendor/htc/pico/proprietary/lib/libhtc_acoustic.so:system/lib/libhtc_acoustic.so \
     device/htc/pico/prebuilt/audio.primary.msm7x27a.so:system/lib/hw/audio.primary.msm7x27a.so \
-    device/htc/pico/prebuilt/audio.primary.msm7x27a.so:system/lib/hw/audio.primary.msm7x27a.so
+    device/htc/pico/prebuilt/audio_policy.msm7x27a.so:system/lib/hw/audio_policy.msm7x27a.so
 
 # Sensors
 PRODUCT_COPY_FILES += \
