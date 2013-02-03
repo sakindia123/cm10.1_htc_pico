@@ -1,3 +1,4 @@
+
 # Copyright (C) 2011 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,8 +36,6 @@ PRODUCT_PACKAGES += \
     
 # Audio
 PRODUCT_PACKAGES += \
-    audio.primary.msm7x27a \
-    audio_policy.msm7x27a \
     audio.a2dp.default \
     audio_policy.conf \
     libaudioutils
@@ -125,13 +124,9 @@ PRODUCT_PACKAGES += \
     VisualizationWallpapers \
     librs_jni
 
-# Releasetools
-# PRODUCT_COPY_FILES += \
-#     device/htc/pico/releasetools/extras.sh:system/bin/extras.sh
-
 # Vold 
 PRODUCT_COPY_FILES += \
-    device/htc/pico/files/etc/vold.fstab:system/etc/vold.fstab \
+    device/htc/pico/files/etc/vold.fstab:system/etc/vold.fstab
     
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -139,7 +134,7 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_apsta_b2.bin:system/etc/firmware/fw_bcm4330_apsta_b2.bin \
     device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_p2p_b2.bin:system/etc/firmware/fw_bcm4330_p2p_b2.bin \
     device/htc/pico/files/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/htc/pico/files/etc/dhcpd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
+    device/htc/pico/files/etc/dhcpd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf
     
 # Audio
 PRODUCT_COPY_FILES += \
@@ -151,8 +146,8 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/etc/AudioFilter_HP.csv:system/etc/AudioFilter_HP.csv \
     vendor/htc/pico/proprietary/lib/libaudioeq.so:system/lib/libaudioeq.so \
     vendor/htc/pico/proprietary/lib/libhtc_acoustic.so:system/lib/libhtc_acoustic.so \
-#    device/htc/pico/prebuilt/audio.primary.msm7x27a.so:system/lib/hw/audio.primary.msm7x27a.so \
-#    device/htc/pico/prebuilt/audio.primary.msm7x27a.so:system/lib/hw/audio.primary.msm7x27a.so
+    device/htc/pico/prebuilt/audio.primary.msm7x27a.so:system/lib/hw/audio.primary.msm7x27a.so \
+    device/htc/pico/prebuilt/audio.primary.msm7x27a.so:system/lib/hw/audio.primary.msm7x27a.so
 
 # Sensors
 PRODUCT_COPY_FILES += \
@@ -176,7 +171,6 @@ PRODUCT_COPY_FILES += \
     vendor/htc/pico/proprietary/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
     vendor/htc/pico/proprietary/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so 
     
-    
 # RIL
 PRODUCT_COPY_FILES += \
     vendor/htc/pico/proprietary/lib/libhtc_ril.so:system/lib/libhtc_ril.so \
@@ -194,7 +188,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
-    vendor/htc/pico/proprietary/etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd:system/etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd \
+    vendor/htc/pico/proprietary/etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd:system/etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -211,7 +205,7 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
     device/htc/pico/prebuilt/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
     device/htc/pico/prebuilt/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl
-    
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.camera=pico \
     ro.com.google.locationfeatures=1 \
@@ -221,10 +215,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.lockprof.threshold=500 \
     dalvik.vm.dexopt-flags=m=y \
     ro.telephony.call_ring.multiple=false \
-    ro.vold.umsdirtyratio=40 \
-    ro.config.ringtone=CyanTone.ogg \
-    ro.config.notification_sound=CyanPing.ogg \
-    ro.config.alarm_alert=Hassium.ogg    
+    ro.vold.umsdirtyratio=50 \
+    persist.sys.purgeable_assets=1
     
 PRODUCT_AAPT_CONFIG := normal mdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi

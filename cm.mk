@@ -14,6 +14,9 @@ $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 # Inherit device configuration
 $(call inherit-product, device/htc/pico/pico.mk)
 
+PRODUCT_RELEASE_NAME := Explorer
+PRODUCT_VERSION_DEVICE_SPECIFIC := -Pico
+
 # Product name
 PRODUCT_NAME := cm_pico
 PRODUCT_BRAND := htc_europe

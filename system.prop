@@ -77,7 +77,6 @@ DEVICE_PROVISIONED=1
 htc.audio.alc.enable   = 1
 htc.audio.swalt.enable = 1
 dalvik.vm.heapsize=48m
-dalvik.vm.stack-trace-file=/data/anr/traces.txt
 ro.opengles.version = 131072
 debug.composition.7x27A.type=mdp
 media.stagefright.enable-player=true
