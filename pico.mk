@@ -1,4 +1,3 @@
-
 # Copyright (C) 2011 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,22 +35,27 @@ PRODUCT_PACKAGES += \
     
 # Audio
 PRODUCT_PACKAGES += \
+    audio.primary.msm7x27a \
+    audio_policy.msm7x27a \
     audio.a2dp.default \
     audio_policy.conf \
-    libaudioutils
+    libaudioutils \
+    audio.usb.default
 
 # Other
 PRODUCT_PACKAGES += \
     dexpreopt \
     lights.pico \
     sensors.msm7x27a \
-    gps.pico \
+    gps.msm7x27a \
     librpc \
+    gps.msm7x27a \
     power.msm7x27a
     
 # Camera
 PRODUCT_PACKAGES += \
-    camera.default    
+    camera.default \
+    libsurfaceflinger_client
     
 # Misc
 PRODUCT_PACKAGES += \
@@ -84,9 +88,10 @@ PRODUCT_COPY_FILES += \
     
 # Camera
 PRODUCT_COPY_FILES += \
-    vendor/htc/pico/proprietary/lib/hw/camera.default.so:system/lib/hw/camera.default.so \
+    vendor/htc/pico/proprietary/lib/hw/camera.default.so:system/lib/hw/vendor-camera.default.so \
     vendor/htc/pico/proprietary/lib/liboemcamera.so:system/lib/liboemcamera.so \
     vendor/htc/pico/proprietary/lib/libmmipl.so:system/lib/libmmipl.so \
+    vendor/htc/pico/proprietary/lib/libmmjpeg.so:obj/lib/libmmjpeg.so \
     vendor/htc/pico/proprietary/lib/libmmjpeg.so:system/lib/libmmjpeg.so \
     vendor/htc/pico/proprietary/lib/libcameraface.so:system/lib/libcameraface.so \
     vendor/htc/pico/proprietary/lib/libcamerapp.so:system/lib/libcamerapp.so \
@@ -112,7 +117,7 @@ PRODUCT_COPY_FILES += \
     
 # Set usb type
 ADDITIONAL_DEFAULT_PROPERTIES += \
-    persist.sys.usb.config=mass_storage \
+    persist.sys.usb.config=mass_storage,adb \
     persist.service.adb.enable=1
 
 # Publish that we support the live wallpaper feature.
@@ -147,8 +152,6 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/etc/AudioFilter_HP.csv:system/etc/AudioFilter_HP.csv \
     vendor/htc/pico/proprietary/lib/libaudioeq.so:system/lib/libaudioeq.so \
     vendor/htc/pico/proprietary/lib/libhtc_acoustic.so:system/lib/libhtc_acoustic.so \
-    device/htc/pico/prebuilt/audio.primary.msm7x27a.so:system/lib/hw/audio.primary.msm7x27a.so \
-    device/htc/pico/prebuilt/audio.primary.msm7x27a.so:system/lib/hw/audio.primary.msm7x27a.so
 
 # Sensors
 PRODUCT_COPY_FILES += \
