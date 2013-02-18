@@ -49,7 +49,6 @@ PRODUCT_PACKAGES += \
     sensors.msm7x27a \
     gps.msm7x27a \
     librpc \
-    gps.msm7x27a \
     power.msm7x27a
     
 # Camera
