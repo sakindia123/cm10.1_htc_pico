@@ -41,7 +41,7 @@ extern "C" {
 //#include <media/AudioRecord.h>
 
 
-#define COMBO_DEVICE_SUPPORTED // Headset speaker combo device not supported on this target
+#define COMBO_DEVICE_SUPPORTED 1
 #define DUALMIC_KEY "dualmic_enabled"
 #define TTY_MODE_KEY "tty_mode"
 #define ECHO_SUPRESSION "ec_supported"
@@ -95,7 +95,7 @@ static bool audpp_filter_inited = false;
 static bool adrc_filter_exists[3];
 static bool mbadrc_filter_exists[3];
 static int post_proc_feature_mask = 0;
-static int new_post_proc_feature_mask = 0;
+int new_post_proc_feature_mask = (ADRC_DISABLE | EQ_DISABLE | RX_IIR_DISABLE);
 static bool hpcm_playback_in_progress = false;
 #ifdef QCOM_TUNNEL_LPA_ENABLED
 static bool lpa_playback_in_progress = false;
@@ -195,6 +195,7 @@ AudioHardware::AudioHardware() :
                 CHECK_FOR(BT);
                 CHECK_FOR(BT_EC_OFF);
                 CHECK_FOR(HEADSET);
+                CHECK_FOR(NO_MIC_HEADSET);
                 CHECK_FOR(STEREO_HEADSET_AND_SPEAKER);
                 CHECK_FOR(IN_S_SADC_OUT_HANDSET);
                 CHECK_FOR(IN_S_SADC_OUT_SPEAKER_PHONE);
@@ -1648,7 +1649,9 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
     }
 
     // if inputDevice == 0, restore output routing
-    if (new_snd_device == -1) {
+    if (new_snd_device == -1) 
+    {
+    ALOGI("do output routing device %x\n", outputDevices);
         if (outputDevices & (outputDevices - 1)) {
             if ((outputDevices & AudioSystem::DEVICE_OUT_SPEAKER) == 0) {
                 ALOGV("Hardware does not support requested route combination (%#X),"
@@ -1679,6 +1682,9 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
             ALOGI("Routing audio to No microphone Wired Headset and Speaker (%d,%x)\n", mMode, outputDevices);
             new_snd_device = SND_DEVICE_STEREO_HEADSET_AND_SPEAKER;
             new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
+       } else if (outputDevices & AudioSystem::DEVICE_OUT_WIRED_HEADPHONE){
+         ALOGI("Routing audio to No microphone Wired Headset (%d,%x)\n", mMode, outputDevices);
+                new_snd_device = SND_DEVICE_NO_MIC_HEADSET;          
 #endif
 #ifdef QCOM_FM_ENABLED
         } else if ((outputDevices & AudioSystem::DEVICE_OUT_WIRED_HEADSET) &&
@@ -1730,11 +1736,17 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
         }
     }
 
-    if (mDualMicEnabled && mMode == AudioSystem::MODE_IN_CALL) {
+    if (mDualMicEnabled && mMode == AudioSystem::MODE_IN_CALL)
+   {
+     if (new_snd_device == SND_DEVICE_HANDSET) 
+   }
         if (new_snd_device == SND_DEVICE_HANDSET) {
             ALOGI("Routing audio to handset with DualMike enabled\n");
             new_snd_device = SND_DEVICE_IN_S_SADC_OUT_HANDSET;
-        } else if (new_snd_device == SND_DEVICE_SPEAKER) {
+        }
+        else
+       if (new_snd_device == SND_DEVICE_SPEAKER) 
+       {
             ALOGI("Routing audio to speakerphone with DualMike enabled\n");
             new_snd_device = SND_DEVICE_IN_S_SADC_OUT_SPEAKER_PHONE;
         }
@@ -1750,35 +1762,12 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
        new_snd_device = SND_DEVICE_FM_DIGITAL_BT_A2DP_HEADSET;
 #endif
 
-    if (new_snd_device != -1 && new_snd_device != mCurSndDevice) {
-        ret = doAudioRouteOrMute(new_snd_device);
+    if (new_snd_device != -1 && new_snd_device != mCurSndDevice)
+   {
+        ret = doAudioRouteOrMute(new_snd_device);     
 
-        //disable post proc first for previous session
-        if(hpcm_playback_in_progress
-#ifdef QCOM_TUNNEL_LPA_ENABLED
-         || lpa_playback_in_progress
-#endif
-         ) {
-            msm72xx_enable_postproc(false);
-#ifdef SRS_PROCESSING
-            msm72xx_enable_srs(SRS_PARAMS_ALL, false);
-#endif /*SRS_PROCESSING*/
-        }
-
-        //enable post proc for new device
         snd_device = new_snd_device;
         post_proc_feature_mask = new_post_proc_feature_mask;
-
-        if(hpcm_playback_in_progress
-#ifdef QCOM_TUNNEL_LPA_ENABLED
-         || lpa_playback_in_progress
-#endif
-         ){
-            msm72xx_enable_postproc(true);
-#ifdef SRS_PROCESSING
-            msm72xx_enable_srs(SRS_PARAMS_ALL, true);
-#endif /*SRS_PROCESSING*/
-        }
 
         mCurSndDevice = new_snd_device;
     }
@@ -2321,7 +2310,7 @@ ssize_t AudioHardware::AudioStreamOutMSM72xx::write(const void* buffer, size_t b
             hpcm_playback_in_progress = true;
             post_proc_feature_mask = new_post_proc_feature_mask;
             //enable post processing
-            msm72xx_enable_postproc(true);
+            // msm72xx_enable_postproc(true);
 #ifdef SRS_PROCESSING
             msm72xx_enable_srs(SRS_PARAMS_ALL, true);
 #endif /*SRS_PROCESSING*/
@@ -2708,7 +2697,7 @@ status_t AudioHardware::AudioSessionOutMSM7xxx::set(
         mLPADriverFd = LPADriverFd;
         lpa_playback_in_progress = true;
         post_proc_feature_mask = new_post_proc_feature_mask;
-        msm72xx_enable_postproc(true);
+        //msm72xx_enable_postproc(true);
 #ifdef SRS_PROCESSING
         msm72xx_enable_srs(SRS_PARAMS_ALL, true);
 #endif /*SRS_PROCESSING*/
