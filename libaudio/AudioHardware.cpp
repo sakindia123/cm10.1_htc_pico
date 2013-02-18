@@ -159,6 +159,23 @@ AudioHardware::AudioHardware() :
            audpp_filter_inited = true;
    }
 
+   int (*set_acoustic_parameters)();
+  
+    acoustic = ::dlopen("/system/lib/libhtc_acoustic.so", RTLD_NOW);
+    if (acoustic == NULL ) {
+        ALOGE("Could not open libhtc_acoustic.so");
+    }
+
+    set_acoustic_parameters = (int (*)(void))::dlsym(acoustic, "set_acoustic_parameters");
+    if ((*set_acoustic_parameters) == 0 ) {
+        ALOGE("Could not open set_acoustic_parameters()");
+    }
+
+    int rc = set_acoustic_parameters();
+    if (rc < 0) {
+        ALOGE("Could not set acoustic parameters to share memory: %d", rc);
+    }
+
     m7xsnddriverfd = open("/dev/msm_snd", O_RDWR);
     if (m7xsnddriverfd >= 0) {
         int rc = ioctl(m7xsnddriverfd, SND_GET_NUM_ENDPOINTS, &mNumSndEndpoints);
