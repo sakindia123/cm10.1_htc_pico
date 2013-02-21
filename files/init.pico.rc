@@ -165,6 +165,12 @@ service iprenew_p2p /system/bin/dhcpcd -n
     disabled
     oneshot
 
+service hostapd /system/bin/hostapd /data/misc/wifi/hostapd.conf
+    socket hostapd_eth0 dgram 660 wifi wifi
+    group wifi inet
+    oneshot
+    disabled
+
     # bugreport is triggered by the KEY_VOLUMEUP and BTN_MOUSE keycodes
 service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     class main
