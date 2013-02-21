@@ -1,60 +1,44 @@
 on boot
-    setprop sys.usb.state adb
-    stop adbd
-    start adbd
-    
-on property:sys.usb.config=none
-    stop adbd
-    exec /system/bin/netcfg usb0 down
-    write /sys/class/usb_composite/adb/enable 0
-    write /sys/class/usb_composite/usb_mass_storage/enable 0
-    write /sys/class/usb_composite/rndis/enable 0
-    exec /system/bin/netcfg usb0 down
-    setprop sys.usb.state ${sys.usb.config}
-    
-on property:sys.usb.config=adb
-    exec /system/bin/netcfg usb0 down
-    write /sys/class/usb_composite/usb_mass_storage/enable 0
-    write /sys/class/usb_composite/rndis/enable 0
-    write /sys/class/usb_composite/adb/enable 1
-    start adbd
-    setprop sys.usb.state ${sys.usb.config}
-
+    write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
+    write /sys/class/android_usb/android0/iProduct ${ro.product.model}
+    write /sys/class/android_usb/android0/iSerial ${ro.serialno}
+    write /sys/class/android_usb/android0/f_mass_storage/inquiry_string "HTC EVO                0000"
+    write /sys/class/android_usb/android0/f_rndis/manufacturer HTC
+    write /sys/class/android_usb/android0/f_rndis/vendorID 0bb4
+    write /sys/class/android_usb/android0/f_rndis/wceis 1
+ 
 on property:sys.usb.config=mass_storage
-    exec /system/bin/netcfg usb0 down
-    write /sys/class/usb_composite/adb/enable 0
-    write /sys/class/usb_composite/rndis/enable 0
-    write /sys/class/usb_composite/usb_mass_storage/enable 1
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 0bb4
+    write /sys/class/android_usb/android0/idProduct 0ce9
+    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
-
+ 
 on property:sys.usb.config=mass_storage,adb
-    exec /system/bin/netcfg usb0 down
-    write /sys/class/usb_composite/rndis/enable 0    
-    write /sys/class/usb_composite/usb_mass_storage/enable 1
-    write /sys/class/usb_composite/adb/enable 1
-    start adbd
-    setprop sys.usb.state ${sys.usb.config}
-
-on property:sys.usb.config=rndis
-    exec /system/bin/netcfg usb0 up
-    write /sys/class/usb_composite/adb/enable 0
-    write /sys/class/usb_composite/usb_mass_storage/enable 0
-    write /sys/class/usb_composite/rndis/enable 1
-    setprop sys.usb.state ${sys.usb.config}
-
-on property:sys.usb.config=rndis,adb
-    exec /system/bin/netcfg usb0 up
-    write /sys/class/usb_composite/usb_mass_storage/enable 0
-    write /sys/class/usb_composite/adb/enable 1
-    start adbd
-    write /sys/class/usb_composite/rndis/enable 1
-    setprop sys.usb.state ${sys.usb.config}
-
-on property:sys.usb.config=mass_storage,rndis,adb
-    exec /system/bin/netcfg usb0 up
-    write /sys/class/usb_composite/usb_mass_storage/enable 1
-    write /sys/class/usb_composite/rndis/enable 1
-    write /sys/class/usb_composite/adb/enable 1
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 0bb4
+    write /sys/class/android_usb/android0/idProduct 0ce9
+    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
     start adbd
     setprop sys.usb.state ${sys.usb.config}
  
+on property:sys.usb.config=rndis
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 0bb4
+    write /sys/class/android_usb/android0/idProduct 0ce9
+    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/class/android_usb/android0/bDeviceClass 224
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
+ 
+on property:sys.usb.config=rndis,adb
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 0bb4
+    write /sys/class/android_usb/android0/idProduct 0ce9
+    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/class/android_usb/android0/bDeviceClass 224
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
