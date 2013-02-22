@@ -31,6 +31,8 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
 TARGET_HAVE_TSLIB := true
+ARCH_ARM_HAVE_NEON := true
+ARCH_ARM_HAVE_VFP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_BOOTLOADER_BOARD_NAME := pico
 TARGET_CORTEX_CACHE_LINE_32 := true
@@ -46,6 +48,7 @@ BOARD_PAGE_SIZE := 0x00000800
 
 # Additional libraries
 TARGET_PROVIDES_LIBAUDIO := true
+BOARD_PREBUILT_LIBAUDIO := false
 
 # Fix this up by examining /proc/mtd on a running device
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00400000
@@ -78,7 +81,6 @@ TARGET_SPECIFIC_HEADER_PATH := device/htc/pico/include
 
 # OpenGL drivers config file path
 BOARD_EGL_CFG := device/htc/pico/prebuilt/lib/egl/egl.cfg
-BOARD_USES_QCOM_HARDWARE := true
 
 # Wifi related definitions
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
@@ -108,6 +110,8 @@ TARGET_OTA_EXTRAS_FILE := device/htc/pico/releasetools/extras.txt
 # GPS
 BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_GPS := true
+BOARD_USES_QCOM_HARDWARE := true
+BOARD_USES_QCOM_LIBS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := msm7x27a
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
@@ -125,6 +129,7 @@ TARGET_GRALLOC_USES_ASHMEM := true
 TARGET_USES_C2D_COMPOSITION := false
 TARGET_USES_SF_BYPASS := false
 TARGET_HAVE_BYPASS := false
+TARGET_USES_GENLOCK := true
 TARGET_USES_OVERLAY := true
 
 # ICS Stuff

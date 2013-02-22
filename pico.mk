@@ -194,6 +194,20 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/htc/pico/proprietary/etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd:system/etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd
 
+# Misc Blobs
+PRODUCT_COPY_FILES += \
+    device/htc/pico/proprietary/bin/bma150_usr:system/bin/bma150_usr \
+    device/htc/pico/proprietary/bin/htc_ebdlogd:system/bin/htc_ebdlogd \
+    device/htc/pico/proprietary/bin/logcat2:system/bin/logcat2 \
+    device/htc/pico/proprietary/lib/libttscompat.so:system/lib/libttscompat.so \
+    device/htc/pico/proprietary/lib/libv8.so:system/lib/libv8.so \
+    device/htc/pico/proprietary/lib/libv8.so:obj/lib/libv8.so \
+    device/htc/pico/proprietary/lib/libwvdrm_L3.so:system/lib/libwvdrm_L3.so \
+    device/htc/pico/proprietary/lib/libwvm.so:system/lib/libwvm.so \
+    device/htc/pico/proprietary/lib/libWVStreamControlAPI_L3.so:system/lib/libWVStreamControlAPI_L3.so \
+    device/htc/pico/proprietary/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
+    device/htc/pico/proprietary/lib/libjni_latinime.so:obj/lib/libjni_latinime.so
+
 # Keylayouts
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/usr/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
