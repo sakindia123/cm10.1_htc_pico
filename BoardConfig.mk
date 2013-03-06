@@ -17,28 +17,29 @@ USE_CAMERA_STUB := true
 BOARD_VENDOR := htc
 
 TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp -Os
 COMMON_GLOBAL_CFLAGS   += -DREFRESH_RATE=65 -DQCOM_NO_SECURE_PLAYBACK -DBINDER_COMPAT
 COMMON_GLOBAL_CFLAGS   += -DQCOM_ICS_DECODERS -DQCOM_HARDWARE -DNO_UPDATE_PREVIEW
 
-# Arch related defines and optimizations
+# Arch related defines
 TARGET_BOARD_PLATFORM := msm7x27a
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
+
+# Target information
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
+
+# Yes we do,but let's hash it out
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
-TARGET_HAVE_TSLIB := true
-ARCH_ARM_HAVE_NEON := true
+ARCH_ARM_HAVE_VFP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_BOOTLOADER_BOARD_NAME := pico
 TARGET_CORTEX_CACHE_LINE_32 := true
-
-# Target information
-TARGET_NO_BOOTLOADER := true
-TARGET_NO_RADIOIMAGE := true
 
 # Kernel
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
@@ -47,7 +48,6 @@ BOARD_PAGE_SIZE := 0x00000800
 
 # Additional libraries
 TARGET_PROVIDES_LIBAUDIO := true
-BOARD_PREBUILT_LIBAUDIO := false
 
 # Fix this up by examining /proc/mtd on a running device
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00400000
@@ -80,6 +80,7 @@ TARGET_SPECIFIC_HEADER_PATH := device/htc/pico/include
 
 # OpenGL drivers config file path
 BOARD_EGL_CFG := device/htc/pico/prebuilt/lib/egl/egl.cfg
+BOARD_USES_QCOM_HARDWARE := true
 
 # Wifi related definitions
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
@@ -102,7 +103,6 @@ BOARD_LEGACY_NL80211_STA_EVENTS  := true
 TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 TARGET_BOOTANIMATION_USE_RGB565 := true
-COMMON_GLOBAL_CFLAGS += -DHTCLOG
 
 # Releasetools
 TARGET_OTA_EXTRAS_FILE := device/htc/pico/releasetools/extras.txt
@@ -110,12 +110,10 @@ TARGET_OTA_EXTRAS_FILE := device/htc/pico/releasetools/extras.txt
 # GPS
 BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_GPS := true
-BOARD_USES_QCOM_HARDWARE := true
-BOARD_USES_QCOM_LIBS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := msm7x27a
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
-# Graphics & CAF
+# Graphics
 COMMON_GLOBAL_CFLAGS += -DANCIENT_GL
 BOARD_USE_SKIA_LCDTEXT := true
 USE_OPENGL_RENDERER := true
@@ -129,10 +127,21 @@ TARGET_GRALLOC_USES_ASHMEM := true
 TARGET_USES_C2D_COMPOSITION := false
 TARGET_USES_SF_BYPASS := false
 TARGET_HAVE_BYPASS := false
-TARGET_USES_GENLOCK := true
 TARGET_USES_OVERLAY := true
-BOARD_USE_QCOM_LLVM_CLANG_RS := true
-TARGET_NO_RPC := false
+
+# Caf 
+BOARD_HAS_8BIT_BCHECC_SUPPORT := true
+BOARD_KERNEL_BCHECC_SPARESIZE := 160
+BOARD_HAVE_MXT224_CFG := true
+TARGET_HAVE_TSLIB := true
+MM_AUDIO_OMX_ADEC_EVRC_DISABLED := false
+MM_AUDIO_OMX_ADEC_QCELP13_DISABLED := false
+MM_AUDIO_FTM_DISABLED := false
+MM_AUDIO_MEASUREMENT_DISABLED := false
+BOARD_USES_QCNE := true
+PROTEUS_DEVICE_API := true
+MM_AUDIO_VOEM_DISABLED := false
+BOARD_USES_QCOM_AUDIO_SPEECH := true
 
 # ICS Stuff
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -152,7 +161,6 @@ WITH_JIT := true
 ENABLE_JSC_JIT := true
 JS_ENGINE := v8
 HTTP := chrome
-DYNAMIC_SHARED_LIBV8SO := true
 TARGET_FORCE_CPU_UPLOAD := true
 
 # Touch screen compatibility for JB
