@@ -177,7 +177,7 @@ PRODUCT_COPY_FILES += \
     
 # RIL
 PRODUCT_COPY_FILES += \
-    vendor/htc/pico/proprietary/lib/libhtc_ril.so:system/lib/libhtc_ril.so \
+    device/htc/pico/prebuilt/lib/libhtc_ril.so:system/lib/libhtc_ril.so \
     vendor/htc/pico/proprietary/lib/libqc-opt.so:system/lib/libqc-opt.so
 
 # Audio DSP Profiles
@@ -199,14 +199,7 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/bin/bma150_usr:system/bin/bma150_usr \
     device/htc/pico/prebuilt/bin/htc_ebdlogd:system/bin/htc_ebdlogd \
     device/htc/pico/prebuilt/bin/logcat2:system/bin/logcat2 \
-    device/htc/pico/prebuilt/lib/libttscompat.so:system/lib/libttscompat.so \
-    device/htc/pico/prebuilt/lib/libv8.so:system/lib/libv8.so \
-    device/htc/pico/prebuilt/lib/libv8.so:obj/lib/libv8.so \
-    device/htc/pico/prebuilt/lib/libwvdrm_L3.so:system/lib/libwvdrm_L3.so \
-    device/htc/pico/prebuilt/lib/libwvm.so:system/lib/libwvm.so \
-    device/htc/pico/prebuilt/lib/libWVStreamControlAPI_L3.so:system/lib/libWVStreamControlAPI_L3.so \
-    device/htc/pico/prebuilt/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
-    device/htc/pico/prebuilt/lib/libjni_latinime.so:obj/lib/libjni_latinime.so
+    device/htc/pico/prebuilt/lib/libttscompat.so:system/lib/libttscompat.so
 
 # Keylayouts
 PRODUCT_COPY_FILES += \

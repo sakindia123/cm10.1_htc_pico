@@ -9,7 +9,6 @@
 #define KGSL_CONTEXT_NO_GMEM_ALLOC	2
 #define KGSL_CONTEXT_SUBMIT_IB_LIST	4
 #define KGSL_CONTEXT_CTX_SWITCH	8
-#define KGSL_CONTEXT_PREAMBLE	16
 
 /* Memory allocayion flags */
 #define KGSL_MEMFLAGS_GPUREADONLY	0x01000000
@@ -33,16 +32,6 @@
 #define KGSL_CLK_MEM	0x00000008
 #define KGSL_CLK_MEM_IFACE 0x00000010
 #define KGSL_CLK_AXI	0x00000020
-
-/*
- * Reset status values for context
- */
-enum kgsl_ctx_reset_stat {
-	KGSL_CTX_STAT_NO_ERROR				= 0x00000000,
-	KGSL_CTX_STAT_GUILTY_CONTEXT_RESET_EXT		= 0x00000001,
-	KGSL_CTX_STAT_INNOCENT_CONTEXT_RESET_EXT	= 0x00000002,
-	KGSL_CTX_STAT_UNKNOWN_CONTEXT_RESET_EXT		= 0x00000003
-};
 
 #define KGSL_MAX_PWRLEVELS 5
 
@@ -120,7 +109,6 @@ enum kgsl_property_type {
 	KGSL_PROP_MMU_ENABLE 	  = 0x00000006,
 	KGSL_PROP_INTERRUPT_WAITS = 0x00000007,
 	KGSL_PROP_VERSION         = 0x00000008,
-	KGSL_PROP_GPU_RESET_STAT  = 0x00000009
 };
 
 struct kgsl_shadowprop {
@@ -159,7 +147,6 @@ struct kgsl_device_platform_data {
 	unsigned int idle_timeout;
 	unsigned int nap_allowed;
 	unsigned int clk_map;
-	unsigned int idle_needed;
 	struct msm_bus_scale_pdata *bus_scale_table;
 	const char *iommu_user_ctx_name;
 	const char *iommu_priv_ctx_name;
@@ -436,8 +423,7 @@ struct kgsl_cff_syncmem {
 
 /*
  * A timestamp event allows the user space to register an action following an
- * expired timestamp. Note IOCTL_KGSL_TIMESTAMP_EVENT has been redefined to
- * _IOWR to support fences which need to return a fd for the priv parameter.
+ * expired timestamp.
  */
 
 struct kgsl_timestamp_event {
@@ -448,7 +434,7 @@ struct kgsl_timestamp_event {
 	size_t len;              /* Size of the event specific blob */
 };
 
-#define IOCTL_KGSL_TIMESTAMP_EVENT_OLD \
+#define IOCTL_KGSL_TIMESTAMP_EVENT \
 	_IOW(KGSL_IOC_TYPE, 0x31, struct kgsl_timestamp_event)
 
 /* A genlock timestamp event releases an existing lock on timestamp expire */
@@ -458,17 +444,6 @@ struct kgsl_timestamp_event {
 struct kgsl_timestamp_event_genlock {
 	int handle; /* Handle of the genlock lock to release */
 };
-
-/* A fence timestamp event releases an existing lock on timestamp expire */
-
-#define KGSL_TIMESTAMP_EVENT_FENCE 2
-
-struct kgsl_timestamp_event_fence {
-	int fence_fd; /* Fence to signal */
-};
-
-#define IOCTL_KGSL_TIMESTAMP_EVENT \
-	_IOWR(KGSL_IOC_TYPE, 0x33, struct kgsl_timestamp_event)
 
 #ifdef __KERNEL__
 #ifdef CONFIG_MSM_KGSL_DRM
