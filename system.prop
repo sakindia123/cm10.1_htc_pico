@@ -2,7 +2,7 @@
 #
 # system.prop for pico
 #
-DEVICE_PROVISIONED=1
+ 
 rild.libpath=/system/lib/libhtc_ril.so
 rild.libargs=-d /dev/smd0
 rilswitch.vendorlibpath=/system/lib/libhtc_ril.so
@@ -83,10 +83,11 @@ ro.media.dec.jpeg.memcap = 20000000
 ro.vendor.extension_library=/system/lib/libqc-opt.so
  
 # Misc.
+DEVICE_PROVISIONED=1
 htc.audio.alc.enable   = 1
 htc.audio.swalt.enable = 1
 dalvik.vm.heapsize=48m
-debug.composition.7x27A.type=mdp
+debug.composition.7x25A.type=mdp
 media.stagefright.enable-player=true
 media.stagefright.enable-scan=true
 media.stagefright.enable-http=true
@@ -112,11 +113,11 @@ debug.hwui.render_dirty_regions=false
 debug.sf.hw=1
 ro.media.enc.jpeg.quality=100
 ro.setupwizard.enable_bypass=1
+ro.media.dec.aud.wma.enabled=1
 debug.hwc.dynThreshold=1.9
+ro.media.dec.vid.wmv.enabled=1
 ro.config.sync=yes
 ro.phone_storage=0
 ro.hw_plat=7x27a
 ro.kernel.android.checkjni=0
 dalvik.vm.verify-bytecode=false
-debug.egl.hw=1
-ro.staticwallpaper.pixelformat=RGB_565
