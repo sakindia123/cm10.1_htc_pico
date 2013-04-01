@@ -74,7 +74,6 @@ BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun0/file"
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/pico/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/htc/pico/bluetooth/vnd_pico.txt
 
 TARGET_SPECIFIC_HEADER_PATH := device/htc/pico/include
 
@@ -95,7 +94,7 @@ WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcm4330_apsta_b2.bi
 WIFI_DRIVER_FW_PATH_P2P          := "/system/etc/firmware/fw_bcm4330_p2p_b2.bin"
 WIFI_DRIVER_MODULE_NAME          := "bcmdhd"
 WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/etc/firmware/fw_bcm4330_b2.bin nvram_path=/proc/calibration iface_name=eth0"
-WIFI_BAND                        := 802_11_ABG
+WIFI_BAND                        := 802_11_BG
 BOARD_LEGACY_NL80211_STA_EVENTS  := true
 
 # Misc
@@ -112,7 +111,7 @@ BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_GPS := true
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := msm7x27a
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := pico
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 # Graphics & CAF
@@ -132,7 +131,6 @@ TARGET_HAVE_BYPASS := false
 TARGET_USES_GENLOCK := true
 TARGET_USES_OVERLAY := true
 BOARD_USE_QCOM_LLVM_CLANG_RS := true
-TARGET_NO_RPC := false
 
 # ICS Stuff
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -144,6 +142,7 @@ BOARD_USES_LEGACY_RIL := true
 # Camera
 BOARD_NEEDS_MEMORYHEAPPMEM := true
 CAMERA_USES_SURFACEFLINGER_CLIENT_STUB := true
+BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
 
 # Add h/w acceleration in browser

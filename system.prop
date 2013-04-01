@@ -27,7 +27,7 @@ ro.ril.enable.managed.roaming=1
 ro.ril.gprsclass=10
 ro.ril.oem.nosim.ecclist=911,112,999,000,08,118,120,122,110,119,995
 ro.ril.emc.mode=2
-ro.telephony.ril.v3=signalstrength,singlepdp
+ro.telephony.ril.v3=signalstrength,singlepdp,skipbrokendatacall
 ro.ril.htcmaskw1.bitmask = 4294967295
 ro.ril.htcmaskw1 = 14449
 ro.ril.update.acoustic.table = 1
@@ -121,3 +121,5 @@ ro.phone_storage=0
 ro.hw_plat=7x27a
 ro.kernel.android.checkjni=0
 dalvik.vm.verify-bytecode=false
+ro.staticwallpaper.pixelformat=RGB_565
+

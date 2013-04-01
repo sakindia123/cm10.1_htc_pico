@@ -199,14 +199,6 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/bin/bma150_usr:system/bin/bma150_usr \
     device/htc/pico/prebuilt/bin/htc_ebdlogd:system/bin/htc_ebdlogd \
     device/htc/pico/prebuilt/bin/logcat2:system/bin/logcat2 \
-    device/htc/pico/prebuilt/lib/libttscompat.so:system/lib/libttscompat.so \
-    device/htc/pico/prebuilt/lib/libv8.so:system/lib/libv8.so \
-    device/htc/pico/prebuilt/lib/libv8.so:obj/lib/libv8.so \
-    device/htc/pico/prebuilt/lib/libwvdrm_L3.so:system/lib/libwvdrm_L3.so \
-    device/htc/pico/prebuilt/lib/libwvm.so:system/lib/libwvm.so \
-    device/htc/pico/prebuilt/lib/libWVStreamControlAPI_L3.so:system/lib/libWVStreamControlAPI_L3.so \
-    device/htc/pico/prebuilt/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
-    device/htc/pico/prebuilt/lib/libjni_latinime.so:obj/lib/libjni_latinime.so
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -226,15 +218,15 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.camera=pico \
+    ro.com.google.locationfeatures=1 \
+    ro.com.google.networklocation=1 \
+    ro.com.google.gmsversion=2.3_r6 \
     ro.setupwizard.enable_bypass=1 \
     dalvik.vm.lockprof.threshold=500 \
     dalvik.vm.dexopt-flags=m=y \
     ro.telephony.call_ring.multiple=false \
     ro.vold.umsdirtyratio=50 \
-    persist.sys.purgeable_assets=1 \
-    keyguard.no_require_sim=1 \
-    persist.data_netmgrd_nint=3 \
-    ro.ril.transmitpower=true
+    persist.sys.purgeable_assets=1
 
 PRODUCT_AAPT_CONFIG := normal mdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
