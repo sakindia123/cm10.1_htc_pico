@@ -87,7 +87,7 @@ PRODUCT_COPY_FILES += \
     
 # Camera
 PRODUCT_COPY_FILES += \
-    vendor/htc/pico/proprietary/lib/hw/camera.default.so:system/lib/hw/vendor-camera.default.so \
+    vendor/htc/pico/proprietary/lib/hw/camera.default.so:system/lib/hw/camera.default.so \
     vendor/htc/pico/proprietary/lib/liboemcamera.so:system/lib/liboemcamera.so \
     vendor/htc/pico/proprietary/lib/libmmipl.so:system/lib/libmmipl.so \
     vendor/htc/pico/proprietary/lib/libmmjpeg.so:obj/lib/libmmjpeg.so \
