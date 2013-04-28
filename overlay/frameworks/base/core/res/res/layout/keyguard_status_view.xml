@@ -1,3 +1,0 @@
-android:layout_maxHeight="300.0dip"
-<com.android.internal.policy.impl.keyguard.ClockView android:layout_gravity="center" 
-<TextView android:textAppearance="?textAppearanceMedium"   android:layout_gravity="center" android:textSize="65.0dip"   android:layout_marginTop="-20.0dip"
