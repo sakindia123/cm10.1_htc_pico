@@ -51,7 +51,7 @@ touch.toolSize.isSummed = 1
 # will be above 1.0.  We don't expect these values to be accurate.
 touch.pressure.calibration = amplitude
 touch.pressure.source = default
-touch.pressure.scale = 0.0001
+touch.pressure.scale = 0.01
 
 # Size
 touch.size.calibration = normalized
