@@ -1,0 +1,6 @@
+#!/system/bin/sh
+sysctl -w vm.swappiness=70
+echo "1" > /sys/block/zram0/reset
+echo $((30*1024*1024)) > /sys/block/zram0/disksize
+mkswap /dev/block/zram0
+swapon /dev/block/zram0

@@ -97,7 +97,6 @@ media.stagefright.enable-qcp=true
 media.stagefright.enable-meta=false
 ro.use_data_netmgrd=true
 persist.data.ds_fmc_app.mode=0
-ro.max.fling_velocity=4000
 httplive.enable.discontinuity=true
 dev.pm.dyn_samplingrate=1
 dev.pm.dyn_sample_period=700000
@@ -122,4 +121,6 @@ ro.hw_plat=7x27a
 ro.kernel.android.checkjni=0
 dalvik.vm.verify-bytecode=false
 ro.staticwallpaper.pixelformat=RGB_565
-
+ro.max.fling_velocity=12000
+ro.min.fling_velocity=8000
+windowsmgr.max_events_per_sec=150
