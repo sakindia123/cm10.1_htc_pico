@@ -185,13 +185,6 @@
         </string-array>
     </add-resource>
 
-    <string-array name="config_locationProviderPackageNames" translatable="false">
-       <!-- The standard AOSP fused location provider -->
-       <item>com.android.location.fused</item>
-       <!-- The Google Network Location Services location provider -->
-       <item>com.google.android.location</item>
-    </string-array>   
-
    <!-- Set additional audio parameters for incall audio
          Usage: parameter=onstring=offstring
          Examples: <item>realcall=on=off</item>
