@@ -72,6 +72,7 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_CFLAGS += -fno-short-enums
 
+LOCAL_C_INCLUDES := $(TARGET_OUT_HEADERS)/mm-audio/audio-alsa
 ifeq ($(BOARD_USES_QCOM_AUDIO_CALIBRATION),true)
     LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/mm-audio/audcal
 endif
@@ -111,7 +112,6 @@ ifeq ($(BOARD_HAVE_BLUETOOTH),true)
 endif
 
 LOCAL_C_INCLUDES := hardware/libhardware_legacy/audio
-LOCAL_C_INCLUDES := $(TARGET_OUT_HEADERS)/mm-audio/audio-alsa
 
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
