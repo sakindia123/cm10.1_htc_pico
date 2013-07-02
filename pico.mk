@@ -24,7 +24,9 @@ PRODUCT_PACKAGES += \
     libmm-omxcore \
     libstagefrighthw \
     libOmxCore \
-    libI420colorconvert
+    libI420colorconvert \
+    libdashplayer \
+    qcmediaplayer
     
 # Graphics 
 PRODUCT_PACKAGES += \
@@ -87,7 +89,7 @@ PRODUCT_COPY_FILES += \
     
 # Camera
 PRODUCT_COPY_FILES += \
-    vendor/htc/pico/proprietary/lib/hw/camera.default.so:system/lib/hw/vendor-camera.default.so \
+    vendor/htc/pico/proprietary/lib/hw/camera.default.so:system/lib/hw/camera.default.so \
     vendor/htc/pico/proprietary/lib/liboemcamera.so:system/lib/liboemcamera.so \
     vendor/htc/pico/proprietary/lib/libmmipl.so:system/lib/libmmipl.so \
     vendor/htc/pico/proprietary/lib/libmmjpeg.so:obj/lib/libmmjpeg.so \
@@ -128,6 +130,15 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     VisualizationWallpapers \
     librs_jni
+
+#Bluetooh
+PRODUCT_PACKAGES += \
+    brcm_patchram_plus
+
+#Bluetooth conf
+PRODUCT_COPY_FILES += \
+    system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf \
+    device/htc/pico/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
 # Vold 
 PRODUCT_COPY_FILES += \

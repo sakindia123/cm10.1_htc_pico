@@ -165,6 +165,10 @@
     <string-array translatable="false" name="config_tether_wifi_regexs">
         <item>"eth0"</item>
     </string-array>
+
+  <!-- Boolean indicating whether the start command should be called on the wireless interface
+         when starting the SoftAp -->
+    <bool name="config_wifiApStartInterface">true</bool>
     
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
     bluetooth interfaces. If the device doesn't want to support tethering over bluetooth this

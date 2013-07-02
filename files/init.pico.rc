@@ -106,7 +106,7 @@ on boot
     setprop ro.ril.fd.scron.timeout 4
     setprop ro.ril.fd.scroff.timeout 3
 
-service hciattach /system/bin/logwrapper /system/bin/brcm_patchram_plus --no2bytes --tosleep=50000 --enable_hci --baudrate 3000000 --patchram /etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd --scopcm=0,0,0,0,0,0,0,3,3,0 /dev/ttyHS0
+service hciattach /system/bin/logwrapper /system/bin/brcm_patchram_plus --no2bytes --tosleep=50000 --enable_hci --baudrate 3000000 --patchram /system/etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd --scopcm=0,0,0,0,0,0,0,3,3,0 /dev/ttyHS0
     user root
     group bluetooth net_bt_admin net_bt_stack
     disabled

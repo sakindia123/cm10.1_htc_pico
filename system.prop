@@ -103,7 +103,7 @@ dev.pm.dyn_samplingrate=1
 dev.pm.dyn_sample_period=700000
 com.qc.hardware=true
 com.qc.hdmi_out=false
-debug.camcorder.disablemeta=0
+debug.camcorder.disablemeta=1
 debug.qctwa.statusbar=1
 debug.qctwa.preservebuf=1
 debug.gr.numframebuffers=3
@@ -122,4 +122,4 @@ ro.hw_plat=7x27a
 ro.kernel.android.checkjni=0
 dalvik.vm.verify-bytecode=false
 ro.staticwallpaper.pixelformat=RGB_565
-
+ro.android.secure=0
