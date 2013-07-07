@@ -149,7 +149,7 @@ static uint32_t SND_DEVICE_FM_ANALOG_STEREO_HEADSET_CODEC=-1;
 // ----------------------------------------------------------------------------
 
 AudioHardware::AudioHardware() :
-    mInit(false), mMicMute(true), mBluetoothNrec(true), mBluetoothId(0), mTtyMode(TTY_OFF),
+    mInit(false), mMicMute(true), mBluetoothNrec(true), mBluetoothId(0),
     mOutput(0),mBluetoothVGS(false), mSndEndpoints(NULL), mCurSndDevice(-1), mDualMicEnabled(false)
 #ifdef QCOM_FM_ENABLED
     ,mFmFd(-1),FmA2dpStatus(-1)
@@ -1616,9 +1616,9 @@ status_t AudioHardware::setVoiceVolume(float v)
         ALOGW("setVoiceVolume(%f) over 1.0, assuming 1.0\n", v);
         v = 1.0;
     }
-    // Added 0.1 to current volume, as in voice call Mute cannot be set as minimum volume(0.00)
+    // Added 0.4 to current volume, as in voice call Mute cannot be set as minimum volume(0.00)
     // setting Rx volume level as 2 for minimum and 7 as max level.
-    v = 0.1 + v;
+    v = 0.4 + v;
 
     int vol = lrint(v * 3.0);
     ALOGD("setVoiceVolume(%f)\n", v);
