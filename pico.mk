@@ -41,16 +41,16 @@ PRODUCT_PACKAGES += \
     audio_policy.msm7x27a \
     audio.a2dp.default \
     audio_policy.conf \
-    libaudioutils \
-    audio.usb.default
+    libaudioutils
 
 # Other
 PRODUCT_PACKAGES += \
     dexpreopt \
     lights.pico \
-    sensors.msm7x27a \
     gps.msm7x27a \
     librpc \
+    com.android.future.usb.accessory \
+    libnetcmdiface \
     power.msm7x27a
     
 # Camera
@@ -58,12 +58,6 @@ PRODUCT_PACKAGES += \
     camera.default \
     libsurfaceflinger_client
     
-# Misc
-PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory \
-    libnetcmdiface \
-    dexpreopt
-
 # Hardware properties 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
@@ -210,7 +204,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/bin/bma150_usr:system/bin/bma150_usr \
     device/htc/pico/prebuilt/bin/htc_ebdlogd:system/bin/htc_ebdlogd \
-    device/htc/pico/prebuilt/bin/logcat2:system/bin/logcat2 \
+    device/htc/pico/prebuilt/bin/logcat2:system/bin/logcat2
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -229,16 +223,13 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.camera=pico \
-    ro.com.google.locationfeatures=1 \
-    ro.com.google.networklocation=1 \
-    ro.com.google.gmsversion=2.3_r6 \
     ro.setupwizard.enable_bypass=1 \
-    dalvik.vm.lockprof.threshold=500 \
-    dalvik.vm.dexopt-flags=m=y \
     ro.telephony.call_ring.multiple=false \
     ro.vold.umsdirtyratio=50 \
-    persist.sys.purgeable_assets=1
+    persist.sys.purgeable_assets=1 \
+    ro.telephony.call_ring.delay=3000
 
 PRODUCT_AAPT_CONFIG := normal mdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
+PRODUCT_TAGS += dalvik.gc.type-precise

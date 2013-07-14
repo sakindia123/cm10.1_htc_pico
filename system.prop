@@ -84,6 +84,8 @@ ro.media.dec.jpeg.memcap = 20000000
 # src:vendor/qcom/proprietary/android-perf/release/lib/<CPU arch>/libqc-opt.so
 com.qc.hardware=true
 ro.vendor.extension_library=/system/lib/libqc-opt.so
+dev.pm.dyn_samplingrate=1
+dev.pm.dyn_sample_period=700000
 
 # HTC Acoustic
 htc.audio.alc.enable   = 1
@@ -91,6 +93,7 @@ htc.audio.swalt.enable = 1
 
 # Display
 debug.composition.7x25A.type=mdp
+debug.composition.type=mdp
 ro.hw_plat=7x27a
 media.stagefright.enable-player=true
 media.stagefright.enable-scan=true
@@ -111,6 +114,7 @@ debug.hwui.render_dirty_regions=false
 debug.sf.hw=1
 ro.media.enc.jpeg.quality=100
 ro.staticwallpaper.pixelformat=RGB_565
+debug.hwc.dynThreshold=1.9
 
 # Dalvik
 dalvik.vm.heapsize=48m
@@ -121,17 +125,12 @@ dalvik.vm.dexopt-data-only=1
 dalvik.vm.dexopt-flags=v=a,o=v,m=y,u=y
 dalvik.vm.execution-mode=int:jit
 dalvik.vm.verify-bytecode=false
+dalvik.vm.lockprof.threshold=500
 
 # Misc
 ro.use_data_netmgrd=true
 persist.data.ds_fmc_app.mode=0
 httplive.enable.discontinuity=true
-dev.pm.dyn_samplingrate=1
-dev.pm.dyn_sample_period=700000
-ro.setupwizard.enable_bypass=1
-ro.media.dec.aud.wma.enabled=1
-debug.hwc.dynThreshold=1.9
-ro.media.dec.vid.wmv.enabled=1
 ro.config.sync=yes
 ro.phone_storage=0
 ro.kernel.android.checkjni=0
