@@ -177,6 +177,3 @@ service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     disabled
     oneshot
     keycodes 115 272
-
-# load wifi module
-insmod /system/lib/modules/bcmdhd.ko
