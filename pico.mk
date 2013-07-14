@@ -61,6 +61,7 @@ PRODUCT_PACKAGES += \
 # Misc
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
+    libnetcmdiface \
     dexpreopt
 
 # Hardware properties 
