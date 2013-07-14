@@ -99,7 +99,7 @@ ro.use_data_netmgrd=true
 persist.data.ds_fmc_app.mode=0
 ro.max.fling_velocity=4000
 httplive.enable.discontinuity=true
-dev.pm.dyn_samplingrate=1
+dev.pm.dyn_samplingrate=1sys.mem.max_hidden_apps=10
 dev.pm.dyn_sample_period=700000
 com.qc.hardware=true
 com.qc.hdmi_out=false
@@ -123,3 +123,9 @@ ro.kernel.android.checkjni=0
 dalvik.vm.verify-bytecode=false
 ro.staticwallpaper.pixelformat=RGB_565
 ro.android.secure=0
+ro.zram.default=0
+sys.mem.max_hidden_apps=5
+dalvik.vm.checkjni=0
+dalvik.vm.dexopt-data-only=1
+dalvik.vm.dexopt-flags=v=a,o=v,m=y,u=y
+dalvik.vm.execution-mode=int:jit
