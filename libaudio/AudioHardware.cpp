@@ -1358,7 +1358,7 @@ static void msm72xx_enable_srs(int flags, bool state)
 #endif /*SRS_PROCESSING*/
 static int msm72xx_enable_postproc(bool state)
 {
-/*    int fd;
+    int fd;
     int device_id=0;
 
     char postProc[128];
@@ -1515,7 +1515,7 @@ static int msm72xx_enable_postproc(bool state)
         }
    }
 
-   close(fd); */
+   close(fd);
    return 0;
 }
 
