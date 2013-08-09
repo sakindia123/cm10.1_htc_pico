@@ -180,16 +180,6 @@ mDirectOutrefCnt(0)
         ALOGE("Could not set acoustic parameters to share memory: %d", rc);
     }
 
-    /* Check the system property for enable or not the ALC function */
-    property_get("htc.audio.alc.enable", value, "0");
-    alc_enable = atoi(value);
-    ALOGV("Enable ALC function: %d", alc_enable);
-
-    /* Check the system property for enable or not the SWALT function */
-    property_get("htc.audio.swalt.enable", value, "0");
-    swalt_enable = atoi(value);
-    ALOGV("Enable SWALT function: %d", swalt_enable);
-
     m7xsnddriverfd = open("/dev/msm_snd", O_RDWR);
     if (m7xsnddriverfd >= 0) {
         int rc = ioctl(m7xsnddriverfd, SND_GET_NUM_ENDPOINTS, &mNumSndEndpoints);
