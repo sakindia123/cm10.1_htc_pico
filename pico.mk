@@ -204,7 +204,6 @@ PRODUCT_COPY_FILES += \
 # Misc Blobs
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/bin/bma150_usr:system/bin/bma150_usr \
-    device/htc/pico/prebuilt/bin/htc_ebdlogd:system/bin/htc_ebdlogd \
     device/htc/pico/prebuilt/bin/logcat2:system/bin/logcat2
 
 # Keylayouts
@@ -233,4 +232,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_AAPT_CONFIG := normal mdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_TAGS += dalvik.gc.type-precise
