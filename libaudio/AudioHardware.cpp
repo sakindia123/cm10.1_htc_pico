@@ -652,11 +652,11 @@ status_t AudioHardware::setParameters(const String8& keyValuePairs)
 
     key = String8(TTY_MODE_KEY);
     if (param.get(key, value) == NO_ERROR) {
-        if (value == "full" || value == "tty_full") {
+        if (value == "full") {
             mTtyMode = TTY_FULL;
-        } else if (value == "hco" || value == "tty_hco") {
+        } else if (value == "hco") {
             mTtyMode = TTY_HCO;
-        } else if (value == "vco" || value == "tty_vco") {
+        } else if (value == "vco") {
             mTtyMode = TTY_VCO;
         } else {
             mTtyMode = TTY_OFF;
@@ -852,6 +852,11 @@ String8 AudioHardware::getParameters(const String8& keys)
         }
     }
 #endif
+    key = String8(ECHO_SUPRESSION);
+    if (param.get(key, value) == NO_ERROR) {
+        value = String8("yes");
+        param.add(key, value);
+    }
 
     ALOGV("AudioHardware::getParameters() %s", param.toString().string());
     return param.toString();
