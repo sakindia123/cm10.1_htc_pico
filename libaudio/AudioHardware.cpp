@@ -2239,6 +2239,7 @@ status_t AudioHardware::AudioStreamInVoip::set(
 
     ALOGV(" Set state  AUDIO_INPUT_OPENED\n");
     mState = AUDIO_INPUT_OPENED;
+    mHardware->set_mRecordState(true);
 
     mHardware->mVoipInActive = true;
 
